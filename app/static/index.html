@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hue Session</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <p class="eyebrow" id="app-author">Studio lightshow</p>
+          <h1 id="app-name">Hue Session</h1>
+        </div>
+        <div class="status-pill" id="run-pill" data-state="idle">Idle</div>
+      </header>
+
+      <section class="stage">
+        <div class="meters">
+          <div class="spectrum" id="spectrum"></div>
+          <div class="levels">
+            <div class="level"><span>Bass</span><i id="level-bass"></i></div>
+            <div class="level"><span>Mid</span><i id="level-mid"></i></div>
+            <div class="level"><span>High</span><i id="level-high"></i></div>
+            <div class="level"><span>RMS</span><i id="level-rms"></i></div>
+          </div>
+        </div>
+        <div class="lights" id="lights"></div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>1. Hue Bridge</h2>
+          <p class="hint">Press the link button on the bridge, then pair. Play bars must sit in a Hue Entertainment / Sync area.</p>
+          <label>
+            Bridge
+            <select id="bridge-select"></select>
+          </label>
+          <label>
+            Or enter IP
+            <input id="bridge-host" type="text" placeholder="192.168.1.50" autocomplete="off" />
+          </label>
+          <div class="row">
+            <button type="button" class="ghost" id="discover-btn">Discover</button>
+            <button type="button" id="pair-btn">Pair bridge</button>
+          </div>
+          <p class="note" id="pair-note">Not paired yet.</p>
+          <label>
+            Entertainment area
+            <select id="area-select"></select>
+          </label>
+        </article>
+
+        <article class="card">
+          <h2>2. SSL / Logic input</h2>
+          <p class="hint">Pick the SSL interface and the digital or analog channels you want the show to follow.</p>
+          <label>
+            Audio device
+            <select id="device-select"></select>
+          </label>
+          <label>
+            Input channels
+            <input id="channel-map" type="text" placeholder="0,1" />
+          </label>
+          <p class="note">
+            Logic Pro can keep the SSL as its I/O. If this app cannot open the same inputs, send a Logic bus to
+            BlackHole or use SSL 360 loopback and select that device here.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>3. Lightshow</h2>
+          <label>
+            Mode
+            <select id="mode-select">
+              <option value="spectrum">Spectrum — bass / mid / high across Play bars</option>
+              <option value="logic">Logic Session — warmer, recording-friendly</option>
+              <option value="pulse">Pulse — energy and pitch</option>
+              <option value="split">Split — each SSL channel drives a light</option>
+              <option value="studio">Studio — amber kick glow</option>
+              <option value="fire">Fire</option>
+              <option value="ocean">Ocean</option>
+            </select>
+          </label>
+          <label>Sensitivity <input id="sensitivity" type="range" min="0.1" max="4" step="0.1" /></label>
+          <label>Brightness <input id="brightness" type="range" min="0.05" max="1" step="0.05" /></label>
+          <label>Saturation <input id="saturation" type="range" min="0" max="1" step="0.05" /></label>
+          <div class="row">
+            <button type="button" class="primary" id="start-btn">Start lightshow</button>
+            <button type="button" class="ghost" id="stop-btn">Stop</button>
+          </div>
+          <p class="note" id="show-note"></p>
+        </article>
+      </section>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
