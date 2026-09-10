@@ -18,6 +18,7 @@ This is a local app. It talks to your bridge and your audio interface on the sam
 
 | Asset | URL | Access |
 | --- | --- | --- |
+| Source | https://github.com/levensailor/hue | Public repository |
 | Studio dashboard | http://127.0.0.1:8742 | Local only. No login. Pair the Hue Bridge once. |
 
 Change the bind address and port with `APP_HOST` and `APP_PORT` in `.env`.
